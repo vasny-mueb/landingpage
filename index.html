@@ -91,6 +91,11 @@
         .hero-tag strong{display:block;font-size:1.25rem;line-height:1}
         @keyframes tp{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 
+        .confetti-canvas{
+            position:absolute;top:0;left:0;width:100%;height:100%;
+            z-index:4;pointer-events:none
+        }
+
         .trust{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid var(--border)}
         .trust-i{display:flex;flex-direction:column;align-items:center;gap:7px;padding:18px 6px 16px;border-right:1px solid var(--border)}
         .trust-i:last-child{border-right:none}
@@ -209,11 +214,33 @@
         .wa-tip::after{content:'';position:absolute;bottom:-6px;right:24px;width:12px;height:12px;background:#fff;box-shadow:2px 2px 4px rgba(0,0,0,.06);transform:rotate(45deg)}
         .wa-tip.show{opacity:1;transform:translateY(0)}
 
+        .map-fab{
+            position:fixed;bottom:100px;right:24px;z-index:9998;width:54px;height:54px;
+            border-radius:50%;background:#fff;display:flex;align-items:center;
+            justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.18);
+            transition:transform .2s,box-shadow .2s;animation:mb 3s ease-in-out infinite;
+            animation-delay:.8s;padding:8px
+        }
+        .map-fab:active{transform:scale(.88)!important;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+        .map-fab img{width:100%;height:100%;object-fit:contain;border-radius:4px}
+        @keyframes mb{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        .map-tip{
+            position:fixed;bottom:164px;right:14px;z-index:9997;background:#fff;
+            color:var(--dark);font-size:.7rem;font-weight:700;padding:9px 16px;
+            border-radius:var(--rx);box-shadow:0 8px 30px rgba(0,0,0,.09);opacity:0;
+            transform:translateY(8px);transition:opacity .35s,transform .35s;
+            pointer-events:none;white-space:nowrap
+        }
+        .map-tip::after{content:'';position:absolute;bottom:-6px;right:22px;width:12px;height:12px;background:#fff;box-shadow:2px 2px 4px rgba(0,0,0,.06);transform:rotate(45deg)}
+        .map-tip.show{opacity:1;transform:translateY(0)}
+
         .reveal{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s}
         .reveal.vis{opacity:1;transform:translateY(0)}
 
         @supports(padding-bottom:env(safe-area-inset-bottom)){
             .wa-fab{bottom:calc(26px + env(safe-area-inset-bottom))}
+            .map-fab{bottom:calc(100px + env(safe-area-inset-bottom))}
+            .map-tip{bottom:calc(164px + env(safe-area-inset-bottom))}
             .fcta{padding-bottom:calc(52px + env(safe-area-inset-bottom))}
         }
     </style>
@@ -234,6 +261,7 @@
 </header>
 
 <section class="hero">
+    <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
     <div class="hero-content">
         <div class="hero-badge">🇲🇽 FIESTA MEXICANA 2025</div>
         <h1>¡Equipa tu Hogar con <span>Precios de Fiesta</span> en Vasny Mueblería!</h1>
@@ -260,7 +288,6 @@
         <p>Renueva tu espacio este septiembre</p>
     </div>
 
-    <!-- 1 ── SmartTV ── -->
     <div class="pc reveal">
         <div class="pc-img">
             <img src="https://lh3.googleusercontent.com/d/1Ku1mI7l4Frj-u23ZL_ZYTNUxtpLJ8a7X" alt="SmartTV Samsung 43 pulgadas 4K UN43U8200FFXZX" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800&h=600&fit=crop&q=80')">
@@ -275,7 +302,6 @@
         </div>
     </div>
 
-    <!-- 2 ── Minisplit ── -->
     <div class="pc reveal">
         <div class="pc-img">
             <img src="https://lh3.googleusercontent.com/d/1B_USWQx9rDQIgcFy9IcPZwg3fJrgiw8X" alt="Minisplit Inverter VO182C1" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1631567091046-7dbe4d6b1b47?w=800&h=600&fit=crop&q=80')">
@@ -290,7 +316,6 @@
         </div>
     </div>
 
-    <!-- 3 ── Ventilador ── -->
     <div class="pc reveal">
         <div class="pc-img">
             <img src="https://lh3.googleusercontent.com/d/1kHIn_T6pfoWf50D5PFJAYL6_BuFTEmX_" alt="Ventilador de Alta Potencia 3386 Negro" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&h=600&fit=crop&q=80')">
@@ -305,7 +330,6 @@
         </div>
     </div>
 
-    <!-- 4 ── Bocina (tamaño original) ── -->
     <div class="pc reveal">
         <div class="pc-img pc-img--sm">
             <img src="https://lh3.googleusercontent.com/d/1R_gFqtZ3BPoyoeQ-6rI1UJ7lzWXEE2sQ" alt="Bocina de Alta Potencia AWSP15TW" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&h=600&fit=crop&q=80')">
@@ -320,7 +344,6 @@
         </div>
     </div>
 
-    <!-- 5 ── Sala (con zoom) ── -->
     <div class="pc reveal">
         <div class="pc-img pc-img--zoom">
             <img src="https://lh3.googleusercontent.com/d/1tR8pzxhd5UFlFh9zB2s-tHTV5yTIiHh2" alt="Sala Turín 3 Piezas Tela Australia Color Denim" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop&q=80')">
@@ -335,7 +358,6 @@
         </div>
     </div>
 
-    <!-- 6 ── Colchón ── -->
     <div class="pc reveal">
         <div class="pc-img">
             <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&q=80" alt="Colchón Ergonómico para descanso reparador" referrerpolicy="no-referrer" loading="lazy">
@@ -399,6 +421,11 @@
     <p class="footer-copy">© 2025 Vasny Mueblería. Todos los derechos reservados.</p>
 </footer>
 
+<a href="https://maps.app.goo.gl/zCx5iWXTBjfvstEv5" target="_blank" rel="noopener" class="map-fab" id="mapFab" aria-label="Encuentra la mueblería en Google Maps">
+    <img src="https://lh3.googleusercontent.com/d/1rqo3j8RvI9WFWSlT57P_dLEEgPPpHmvX" alt="Ubicación" referrerpolicy="no-referrer">
+</a>
+<div class="map-tip" id="mapTip">📍 Encuentra la Mueblería</div>
+
 <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20quiero%20cotizar%20un%20producto." target="_blank" rel="noopener" class="wa-fab" id="waFab" aria-label="Abrir WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
@@ -411,11 +438,76 @@ document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -30px 0px',threshold:.08});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
 document.getElementById('heroCta').addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){var o=document.querySelector('.header').offsetHeight+document.querySelector('.top-banner').offsetHeight+12;window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-o,behavior:'smooth'})}});
-var tip=document.getElementById('waTip'),tipShown=false;
-function showTip(){if(tipShown)return;tipShown=true;tip.classList.add('show');setTimeout(function(){tip.classList.remove('show')},4500)}
-setTimeout(showTip,6000);
-window.addEventListener('scroll',function(){var s=window.pageYOffset||document.documentElement.scrollTop,t=document.documentElement.scrollHeight-window.innerHeight;if(t>0&&s/t>.35)showTip()},{passive:true});
-document.getElementById('waFab').addEventListener('click',function(){tip.classList.remove('show')});
+
+var waTip=document.getElementById('waTip'),waTipShown=false;
+var mapTip=document.getElementById('mapTip'),mapTipShown=false;
+function showWaTip(){if(waTipShown)return;waTipShown=true;waTip.classList.add('show');setTimeout(function(){waTip.classList.remove('show')},4500)}
+function showMapTip(){if(mapTipShown)return;mapTipShown=true;mapTip.classList.add('show')}
+setTimeout(showWaTip,6000);
+setTimeout(showMapTip,8500);
+window.addEventListener('scroll',function(){var s=window.pageYOffset||document.documentElement.scrollTop,t=document.documentElement.scrollHeight-window.innerHeight;if(t>0&&s/t>.25)showMapTip();if(t>0&&s/t>.35)showWaTip()},{passive:true});
+document.getElementById('waFab').addEventListener('click',function(){waTip.classList.remove('show')});
+document.getElementById('mapFab').addEventListener('click',function(){mapTip.classList.remove('show')});
+
+(function(){
+    var canvas=document.getElementById('confettiCanvas');
+    if(!canvas)return;
+    var ctx=canvas.getContext('2d');
+    var particles=[];
+    var colors=['#006847','#008C5E','#FFFFFF','#E60000','#C40000','#FFD700','#FFC107'];
+    var startTime=Date.now();
+    var duration=3500;
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    function resize(){
+        var rect=canvas.parentElement.getBoundingClientRect();
+        canvas.width=rect.width*dpr;
+        canvas.height=rect.height*dpr;
+        canvas.style.width=rect.width+'px';
+        canvas.style.height=rect.height+'px';
+        ctx.scale(dpr,dpr);
+    }
+    function makeParticle(burst){
+        var w=canvas.width/dpr,h=canvas.height/dpr;
+        return{
+            x:burst?w*.5+(Math.random()-.5)*w*.6:Math.random()*w,
+            y:burst?h*.3+(Math.random()-.5)*h*.2:-8-Math.random()*30,
+            w:3+Math.random()*5,h:7+Math.random()*10,
+            color:colors[Math.floor(Math.random()*colors.length)],
+            vx:(Math.random()-.5)*(burst?6:2),
+            vy:burst?-2-Math.random()*4:1+Math.random()*2.5,
+            rot:Math.random()*Math.PI*2,
+            rv:(Math.random()-.5)*.18,
+            opacity:1,
+            shape:Math.random()>.3?'rect':'circle'
+        };
+    }
+    for(var i=0;i<50;i++)particles.push(makeParticle(true));
+    function draw(p){
+        ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+        ctx.globalAlpha=Math.max(0,p.opacity);ctx.fillStyle=p.color;
+        if(p.shape==='rect'){ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h)}
+        else{ctx.beginPath();ctx.arc(0,0,Math.max(1,p.w/2),0,Math.PI*2);ctx.fill()}
+        ctx.restore();
+    }
+    function tick(){
+        var elapsed=Date.now()-startTime,progress=elapsed/duration;
+        var w=canvas.width/dpr,h=canvas.height/dpr;
+        ctx.clearRect(0,0,w,h);
+        if(elapsed<2000&&Math.random()<.25)particles.push(makeParticle(false));
+        var fade=progress>.7?1-(progress-.7)/.3:1;
+        for(var i=particles.length-1;i>=0;i--){
+            var p=particles[i];
+            p.x+=p.vx;p.y+=p.vy;p.vy+=.045;p.vx*=.995;p.rot+=p.rv;p.opacity=fade;
+            draw(p);
+            if(p.y>h+20||p.opacity<=0)particles.splice(i,1);
+        }
+        if(elapsed<duration||particles.length>0){requestAnimationFrame(tick)}
+        else{canvas.style.display='none'}
+    }
+    resize();
+    window.addEventListener('resize',function(){resize()});
+    tick();
+})();
 </script>
 </body>
 </html>
