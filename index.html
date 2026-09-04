@@ -127,16 +127,22 @@
             font-size:.58rem;font-weight:700;padding:5px 10px;border-radius:50px
         }
         .pc-body{padding:20px 20px 24px}
-        .pc-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-        .pc-model, .pc-price{
-            display:inline-block;font-size:.63rem;font-weight:700;color:var(--red);
+        
+        /* Estilos para Modelo y Precio */
+        .pc-header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px}
+        .pc-model{
+            font-size:.63rem;font-weight:700;color:var(--red);
             text-transform:uppercase;letter-spacing:.08em;
             background:rgba(230,0,0,.06);padding:4px 10px;border-radius:4px;
         }
-        .pc-price {
-            font-size: .8rem; /* Precio más grande */
-            padding: 5px 12px;
+        .pc-price{
+            font-size:.75rem; 
+            font-weight:900;color:var(--red);
+            text-transform:uppercase;letter-spacing:.05em;
+            background:rgba(230,0,0,.06);padding:6px 12px;border-radius:4px;
+            white-space:nowrap;
         }
+
         .pc-title{font-size:1rem;font-weight:800;color:var(--dark);line-height:1.3;margin-bottom:10px}
         .pc-copy{font-size:.84rem;color:var(--muted);line-height:1.65;margin-bottom:22px}
         .pc-cta{
@@ -170,6 +176,7 @@
         .faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
         .faq-item.active .faq-a{max-height:200px}
         .faq-a-inner{padding:0 18px 18px;font-size:.82rem;color:var(--muted);line-height:1.7}
+        .faq-cta-text{color:var(--green);font-weight:700;display:block;margin-top:8px;font-size:.78rem}
 
         .fcta{background:var(--dark);padding:48px 24px 52px;text-align:center;position:relative;overflow:hidden}
         .fcta::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:350px;height:350px;background:radial-gradient(circle,rgba(230,0,0,.12) 0%,transparent 65%);pointer-events:none}
@@ -260,7 +267,7 @@
         <div class="header-logo-fallback" id="logoFallback">VASNY<em>Mueblería</em></div>
     </div>
     <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20quiero%20informaci%C3%B3n%20sobre%20la%20FIESTA%20MEXICANA." class="header-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp
     </a>
 </header>
@@ -268,10 +275,10 @@
 <section class="hero">
     <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
     <div class="hero-content">
-        <div class="hero-badge">🇲🇽 FIESTA MEXICANA 2026</div>
+        <div class="hero-badge">🇲🇽 FIESTA MEXICANA 2025</div>
         <h1>¡Equipa tu Hogar con <span>Precios de Fiesta</span> en Vasny Mueblería!</h1>
         <p class="hero-sub">Aprovecha los descuentos especiales de septiembre en tecnología, clima, entretenimiento y confort. Calidad garantizada para tu casa.</p>
-        <a href="#productos" class="hero-cta-btn" id="heroCta">Ver ofertas de FIESTA MEXICANA ↓</a>
+        <a href="#productos" class="hero-cta-btn" id="heroCta">Ver FIESTA MEXICANA ↓</a>
     </div>
     <div class="hero-img-wrap">
         <img src="https://lh3.googleusercontent.com/d/1EHRnusMqcJBIoosOyuQv6nXHwDtPY8g8" alt="FIESTA MEXICANA Vasny Mueblería" referrerpolicy="no-referrer" loading="eager" onerror="handleImgError(this,'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=440&fit=crop&q=80')">
@@ -293,6 +300,7 @@
         <p>Renueva tu espacio este septiembre</p>
     </div>
 
+    <!-- PRODUCTO 1 -->
     <div class="pc reveal">
         <div class="pc-img">
             <img src="https://lh3.googleusercontent.com/d/1Ku1mI7l4Frj-u23ZL_ZYTNUxtpLJ8a7X" alt="SmartTV Samsung 43 pulgadas 4K UN43U8200FFXZX" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800&h=600&fit=crop&q=80')">
@@ -300,16 +308,17 @@
             <span class="bs">🇲🇽 Septiembre</span>
         </div>
         <div class="pc-body">
-            <div class="pc-meta">
+            <div class="pc-header-row">
                 <span class="pc-model">Modelo: UN43U8200FFXZX</span>
-                <span class="pc-price">$$$$$</span>
+                <span class="pc-price">$0,000</span> 
             </div>
             <h3 class="pc-title">SmartTV Samsung 43" 4K – El Entretenimiento de tus Fiestas</h3>
             <p class="pc-copy">Disfruta el Grito de Independencia, tus partidos y series favoritas en pantalla gigante con resolución ultra nítida. Transforma tu sala en un cine familiar sin pagar de más.</p>
-            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20me%20interesa%20la%20SmartTV%20Samsung%20UN43U8200FFXZX%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar SmartTV por WhatsApp</a>
+            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20me%20interesa%20la%20SmartTV%20Samsung%20UN43U8200FFXZX%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar SmartTV por WhatsApp</a>
         </div>
     </div>
 
+    <!-- PRODUCTO 2 -->
     <div class="pc reveal">
         <div class="pc-img">
             <img src="https://lh3.googleusercontent.com/d/1B_USWQx9rDQIgcFy9IcPZwg3fJrgiw8X" alt="Minisplit Inverter VO182C1" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1631567091046-7dbe4d6b1b47?w=800&h=600&fit=crop&q=80')">
@@ -317,16 +326,17 @@
             <span class="bs">🇲🇽 Septiembre</span>
         </div>
         <div class="pc-body">
-            <div class="pc-meta">
+            <div class="pc-header-row">
                 <span class="pc-model">Modelo: VO182C1</span>
-                <span class="pc-price">$$$$$</span>
+                <span class="pc-price">$0,000</span>
             </div>
             <h3 class="pc-title">Minisplit Inverter – Confort y Frescura con Ahorro de Energía</h3>
             <p class="pc-copy">Olvídate del calor sofocante durante tus reuniones y noches de descanso. Mantiene la temperatura ideal en tu hogar consumiendo menos energía para cuidar tu bolsillo.</p>
-            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20quiero%20cotizar%20el%20Minisplit%20VO182C1%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767;.966;.94 1.164-.173.199;.347.223;.644.075-.297-.15-1.255;.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297;.018-.458.13-.606.134-.133.298;.347.446-.52.149-.174.198;.298.298-.497.099-.198;.05-.371-.025-.52-.075-.149;.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Minisplit por WhatsApp</a>
+            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20quiero%20cotizar%20el%20Minisplit%20VO182C1%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Minisplit por WhatsApp</a>
         </div>
     </div>
 
+    <!-- PRODUCTO 3 -->
     <div class="pc reveal">
         <div class="pc-img">
             <img src="https://lh3.googleusercontent.com/d/1kHIn_T6pfoWf50D5PFJAYL6_BuFTEmX_" alt="Ventilador de Alta Potencia 3386 Negro" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&h=600&fit=crop&q=80')">
@@ -334,16 +344,17 @@
             <span class="bs">🇲🇽 Septiembre</span>
         </div>
         <div class="pc-body">
-            <div class="pc-meta">
+            <div class="pc-header-row">
                 <span class="pc-model">Modelo: 3386 Negro</span>
-                <span class="pc-price">$$$$$</span>
+                <span class="pc-price">$0,000</span>
             </div>
             <h3 class="pc-title">Ventilador de Alta Potencia – Aire Fresco al Instante</h3>
             <p class="pc-copy">La solución rápida, silenciosa y accesible para mantener cada rincón de tu hogar fresco durante los días calurosos de septiembre.</p>
-            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20solicito%20informaci%C3%B3n%20sobre%20el%20Ventilador%203386%20Negro%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767;.966;.94 1.164-.173.199;.347.223;.644.075-.297-.15-1.255;.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297;.018-.458.13-.606.134-.133.298;.347.446-.52.149-.174.198;.298.298-.497.099-.198;.05-.371-.025-.52-.075-.149;.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Ventilador por WhatsApp</a>
+            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20solicuto%20informaci%C3%B3n%20sobre%20el%20Ventilador%203386%20Negro%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Ventilador por WhatsApp</a>
         </div>
     </div>
 
+    <!-- PRODUCTO 4 -->
     <div class="pc reveal">
         <div class="pc-img pc-img--sm">
             <img src="https://lh3.googleusercontent.com/d/1R_gFqtZ3BPoyoeQ-6rI1UJ7lzWXEE2sQ" alt="Bocina de Alta Potencia AWSP15TW" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&h=600&fit=crop&q=80')">
@@ -351,16 +362,17 @@
             <span class="bs">🇲🇽 Septiembre</span>
         </div>
         <div class="pc-body">
-            <div class="pc-meta">
+            <div class="pc-header-row">
                 <span class="pc-model">Modelo: AWSP15TW</span>
-                <span class="pc-price">$$$$$</span>
+                <span class="pc-price">$0,000</span>
             </div>
             <h3 class="pc-title">Bocina de Alta Potencia – Dale Vida a tus Festejos</h3>
             <p class="pc-copy">El sonido potente y nítido que necesitas para ambientar tus reuniones familiares y festejos sin complicaciones con máxima cobertura.</p>
-            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20quiero%20cotizar%20la%20Bocina%20AWSP15TW%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767;.966;.94 1.164-.173.199;.347.223;.644.075-.297-.15-1.255;.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297;.018-.458.13-.606.134-.133.298;.347.446-.52.149-.174.198;.298.298-.497.099-.198;.05-.371-.025-.52-.075-.149;.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Bocina por WhatsApp</a>
+            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20quiero%20cotizar%20la%20Bocina%20AWSP15TW%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Bocina por WhatsApp</a>
         </div>
     </div>
 
+    <!-- PRODUCTO 5 -->
     <div class="pc reveal">
         <div class="pc-img pc-img--zoom">
             <img src="https://lh3.googleusercontent.com/d/1tR8pzxhd5UFlFh9zB2s-tHTV5yTIiHh2" alt="Sala Turín 3 Piezas Tela Australia Color Denim" referrerpolicy="no-referrer" loading="lazy" onerror="handleImgError(this,'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop&q=80')">
@@ -368,16 +380,17 @@
             <span class="bs">🇲🇽 Septiembre</span>
         </div>
         <div class="pc-body">
-            <div class="pc-meta">
-                <span class="pc-model">Turín 3 Piezas · Tela Australia · Color Denim</span>
-                <span class="pc-price">$$$$$</span>
+            <div class="pc-header-row">
+                <span class="pc-model">Turín 3 Piezas · Denim</span>
+                <span class="pc-price">$0,000</span>
             </div>
             <h3 class="pc-title">Sala Turín de 3 Piezas – Elegancia y Confort Familiar</h3>
             <p class="pc-copy">Dale el toque de distinción a tu casa. Confort superior y telas de alta durabilidad diseñadas para recibir a tus invitados con el máximo confort en estas fiestas.</p>
-            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20me%20interesa%20cotizar%20la%20Sala%20Tur%C3%ADn%20Color%20Denim%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767;.966;.94 1.164-.173.199;.347.223;.644.075-.297-.15-1.255;.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297;.018-.458.13-.606.134-.133.298;.347.446-.52.149-.174.198;.298.298-.497.099-.198;.05-.371-.025-.52-.075-.149;.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Sala por WhatsApp</a>
+            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20me%20interesa%20cotizar%20la%20Sala%20Tur%C3%ADn%20Color%20Denim%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Sala por WhatsApp</a>
         </div>
     </div>
 
+    <!-- PRODUCTO 6 -->
     <div class="pc reveal">
         <div class="pc-img">
             <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&q=80" alt="Colchón Ergonómico para descanso reparador" referrerpolicy="no-referrer" loading="lazy">
@@ -385,13 +398,13 @@
             <span class="bs">🇲🇽 Septiembre</span>
         </div>
         <div class="pc-body">
-            <div class="pc-meta">
+            <div class="pc-header-row">
                 <span class="pc-model">Colchón Ergonómico</span>
-                <span class="pc-price">$$$$$</span>
+                <span class="pc-price">$0,000</span>
             </div>
             <h3 class="pc-title">Colchón Ergonómico – El Descanso Reparador que Mereces</h3>
             <p class="pc-copy">Despierta renovado y sin dolores de espalda. Invierte en un descanso de primera clase con soporte anatómico que garantiza noches de sueño profundo.</p>
-            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20me%20interesa%20cotizar%20un%20Colch%C3%B3n%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767;.966;.94 1.164-.173.199;.347.223;.644.075-.297-.15-1.255;.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297;.018-.458.13-.606.134-.133.298;.347.446-.52.149-.174.198;.298.298-.497.099-.198;.05-.371-.025-.52-.075-.149;.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Colchón por WhatsApp</a>
+            <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20me%20interesa%20cotizar%20un%20Colch%C3%B3n%20de%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="pc-cta"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Cotizar Colchón por WhatsApp</a>
         </div>
     </div>
 </section>
@@ -404,20 +417,16 @@
         <p>Sobre la FIESTA MEXICANA</p>
     </div>
     <div class="faq-item reveal">
-        <button class="faq-q" aria-expanded="false">¿Cómo realizo una cotización o pedido?<span class="faq-ch"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Toca el botón de WhatsApp del producto para cotizar al instante con un asesor al 972 116 5861.</div></div>
-    </div>
-    <div class="faq-item reveal">
-        <button class="faq-q" aria-expanded="false">¿Cuentan con entregas a domicilio?<span class="faq-ch"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Sí, entregamos en todo el Istmo y alrededores con costo accesible según la zona. Cotiza tu envío al 972 116 5861.</div></div>
+        <button class="faq-q" aria-expanded="false">¿Realizan entregas a domicilio?<span class="faq-ch"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí, entregamos en todo el Istmo de Tehuantepec y alrededores con un costo de envío muy accesible. <span class="faq-cta-text">Toca el botón verde para cotizar tu domicilio.</span></div></div>
     </div>
     <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false">¿Hasta cuándo aplica la FIESTA MEXICANA?<span class="faq-ch"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Aplica del 7 al 21 de septiembre. Escríbenos al 972 116 5861 para asegurar tu precio.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">La promoción es válida del 7 al 21 de Septiembre. No te quedes sin tu oferta. <span class="faq-cta-text">Escríbenos para asegurar tu producto hoy.</span></div></div>
     </div>
     <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false">¿Cuáles son los métodos de pago?<span class="faq-ch"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Aceptamos efectivo, débito y hasta 9 meses sin intereses en tarjetas participantes. Contáctanos al 972 116 5861.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Aceptamos efectivo, débito y hasta 9 meses sin intereses en tarjetas participantes. <span class="faq-cta-text">Consulta los bancos participantes en el botón verde.</span></div></div>
     </div>
 </section>
 
@@ -425,7 +434,7 @@
     <h2 class="fcta-title reveal">¡No dejes pasar la <span>FIESTA MEXICANA</span> de Vasny Mueblería!</h2>
     <p class="fcta-copy reveal">Contáctanos hoy mismo por WhatsApp y recibe asesoría personalizada sin compromiso.</p>
     <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20quiero%20informaci%C3%B3n%20sobre%20la%20FIESTA%20MEXICANA." target="_blank" rel="noopener" class="fcta-btn reveal">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767;.966;.94 1.164-.173.199;.347.223;.644.075-.297-.15-1.255;.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297;.018-.458.13-.606.134-.133.298;.347.446-.52.149-.174.198;.298.298-.497.099-.198;.05-.371-.025-.52-.075-.149;.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span>HABLAR CON UN ASESOR EN WHATSAPP<small>972 116 5861</small></span>
     </a>
 </section>
@@ -442,7 +451,7 @@
     </div>
     <p class="footer-addr">[DIRECCIÓN DE LA TIENDA]</p>
     <div class="footer-line"></div>
-    <p class="footer-copy">© 2026 Vasny Mueblería. Todos los derechos reservados.</p>
+    <p class="footer-copy">© 2025 Vasny Mueblería. Todos los derechos reservados.</p>
 </footer>
 
 <a href="https://maps.app.goo.gl/zCx5iWXTBjfvstEv5" target="_blank" rel="noopener" class="map-fab" id="mapFab" aria-label="Encuentra la mueblería en Google Maps">
@@ -451,87 +460,14 @@
 <div class="map-tip" id="mapTip">📍 Encuentra la Mueblería</div>
 
 <a href="https://wa.me/529721165861?text=Hola%20Vasny%20Muebler%C3%ADa,%20quiero%20cotizar%20un%20producto." target="_blank" rel="noopener" class="wa-fab" id="waFab" aria-label="Abrir WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767;.966;.94 1.164-.173.199;.347.223;.644.075-.297-.15-1.255;.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297;.018-.458.13-.606.134-.133.298;.347.446-.52.149-.174.198;.298.298-.497.099-.198;.05-.371-.025-.52-.075-.149;.669-1.612-.916-2.207-.242-.579;.487-.5;.669-.51-.173-.008;.371-.01;.57-.01-.198 0;.52.074;.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262;.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694;.248-1.289.173-1.413-.074-.124%.272-.198%.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.M157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694 .625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 <div class="wa-tip" id="waTip">¿Necesitas ayuda? Escríbenos 🟢</div>
 
 <script>
 function handleImgError(img,fallbackUrl){img.onerror=null;if(fallbackUrl){img.src=fallbackUrl;img.onerror=function(){showImgPlaceholder(img)}}else{showImgPlaceholder(img)}}
 function showImgPlaceholder(img){img.onerror=null;var w=img.parentElement;if(!w||w.classList.contains('img-fallback-active'))return;w.classList.add('img-fallback-active');var d=document.createElement('div');d.className='img-fallback';d.innerHTML='<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Imagen no disponible</span>';img.style.display='none';w.insertBefore(d,w.firstChild)}
-document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=this.parentElement,wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('active');i.querySelector('.faq-q').setAttribute('aria-expanded','false')});if(!wasActive){item.classList.add('active');this.setAttribute('aria-expanded','true')}})});
-var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -30px 0px',threshold:.08});
-document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-document.getElementById('heroCta').addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){var o=document.querySelector('.header').offsetHeight+document.querySelector('.top-banner').offsetHeight+12;window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-o,behavior:'smooth'})}});
-
-var waTip=document.getElementById('waTip'),waTipShown=false;
-var mapTip=document.getElementById('mapTip'),mapTipShown=false;
-function showWaTip(){if(waTipShown)return;waTipShown=true;waTip.classList.add('show');setTimeout(function(){waTip.classList.remove('show')},4500)}
-function showMapTip(){if(mapTipShown)return;mapTipShown=true;mapTip.classList.add('show')}
-setTimeout(showWaTip,6000);
-setTimeout(showMapTip,8500);
-window.addEventListener('scroll',function(){var s=window.pageYOffset||document.documentElement.scrollTop,t=document.documentElement.scrollHeight-window.innerHeight;if(t>0&&s/t>.25)showMapTip();if(t>0&&s/t>.35)showWaTip()},{passive:true});
-document.getElementById('waFab').addEventListener('click',function(){waTip.classList.remove('show')});
-document.getElementById('mapFab').addEventListener('click',function(){mapTip.classList.remove('show')});
-
-(function(){
-    var canvas=document.getElementById('confettiCanvas');
-    if(!canvas)return;
-    var ctx=canvas.getContext('2d');
-    var particles=[];
-    var colors=['#006847','#008C5E','#FFFFFF','#E60000','#C40000','#FFD700','#FFC107'];
-    var startTime=Date.now();
-    var duration=3500;
-    var dpr=Math.min(window.devicePixelRatio||1,2);
-    function resize(){
-        var rect=canvas.parentElement.getBoundingClientRect();
-        canvas.width=rect.width*dpr;
-        canvas.height=rect.height*dpr;
-        canvas.style.width=rect.width+'px';
-        canvas.style.height=rect.height+'px';
-        ctx.scale(dpr,dpr);
-    }
-    function makeParticle(burst){
-        var w=canvas.width/dpr,h=canvas.height/dpr;
-        return{
-            x:burst?w*.5+(Math.random()-.5)*w*.6:Math.random()*w,
-            y:burst?h*.3+(Math.random()-.5)*h*.2:-8-Math.random()*30,
-            w:3+Math.random()*5,h:7+Math.random()*10,
-            color:colors[Math.floor(Math.random()*colors.length)],
-            vx:(Math.random()-.5)*(burst?6:2),
-            vy:burst?-2-Math.random()*4:1+Math.random()*2.5,
-            rot:Math.random()*Math.PI*2,
-            rv:(Math.random()-.5)*.18,
-            opacity:1,
-            shape:Math.random()>.3?'rect':'circle'
-        };
-    }
-    for(var i=0;i<50;i++)particles.push(makeParticle(true));
-    function draw(p){
-        ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
-        ctx.globalAlpha=Math.max(0,p.opacity);ctx.fillStyle=p.color;
-        if(p.shape==='rect'){ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h)}
-        else{ctx.beginPath();ctx.arc(0,0,Math.max(1,p.w/2),0,Math.PI*2);ctx.fill()}
-        ctx.restore();
-    }
-    function tick(){
-        var elapsed=Date.now()-startTime,progress=elapsed/duration;
-        var w=canvas.width/dpr,h=canvas.height/dpr;
-        ctx.clearRect(0,0,w,h);
-        if(elapsed<2000&&Math.random()<.25)particles.push(makeParticle(false));
-        var fade=progress>.7?1-(progress-.7)/.3:1;
-        for(var i=particles.length-1;i>=0;i--){
-            var p=particles[i];
-            p.x+=p.vx;p.y+=p.vy;p.vy+=.045;p.vx*=.995;p.rot+=p.rv;p.opacity=fade;
-            draw(p);
-            if(p.y>h+20||p.opacity<=0)particles.splice(i,1);
-        }
-        if(elapsed<duration||particles.length>0){requestAnimationFrame(tick)}
-        else{canvas.style.display='none'}
-    }
-    resize();
-    window.addEventListener('resize',function(){resize()});
-    tick();
-})();
+document.querySelectorAll('.faq-q').forEach(function(btn){btn.addEventListener('click',function(){var item=this.parentElement,wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('active');i.querySelector('.faq-q').setAttribute('aria-expanded','false')});if(!wasActive){item.classList.add('active');this.setAttribute('aria-expanded','true')}})});var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -30px 0px',threshold:.08});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});document.getElementById('heroCta').addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){var o=document.querySelector('.header').offsetHeight+document.querySelector('.top-banner').offsetHeight+12;window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-o,behavior:'smooth'})}});var waTip=document.getElementById('waTip'),waTipShown=false;var mapTip=document.getElementById('mapTip'),mapTipShown=false;function showWaTip(){if(waTipShown)return;waTipShown=true;waTip.classList.add('show');setTimeout(function(){waTip.classList.remove('show')},4500)}function showMapTip(){if(mapTipShown)return;mapTipShown=true;mapTip.classList.add('show')}setTimeout(showWaTip,6000);setTimeout(showMapTip,8500);window.addEventListener('scroll',function(){var s=window.pageYOffset||document.documentElement.scrollTop,t=document.documentElement.scrollHeight-window.innerHeight;if(t>0&&s/t>.25)showMapTip();if(t>0&&s/t>.35)showWaTip()},{passive:true});document.getElementById('waFab').addEventListener('click',function(){waTip.classList.remove('show')});document.getElementById('mapFab').addEventListener('click',function(){mapTip.classList.remove('show')});(function(){var canvas=document.getElementById('confettiCanvas');if(!canvas)return;var ctx=canvas.getContext('2d');var particles=[];var colors=['#006847','#008C5E','#FFFFFF','#E60000','#C40000','#FFD700','#FFC107'];var startTime=Date.now();var duration=3500;var dpr=Math.min(window.devicePixelRatio||1,2);function resize(){var rect=canvas.parentElement.getBoundingClientRect();canvas.width=rect.width*dpr;canvas.height=rect.height*dpr;canvas.style.width=rect.width+'px';canvas.style.height=rect.height+'px';ctx.scale(dpr,dpr);}function makeParticle(burst){var w=canvas.width/dpr,h=canvas.height/dpr;return{x:burst?w*.5+(Math.random()-.5)*w*.6:Math.random()*w,y:burst?h*.3+(Math.random()-.5)*h*.2:-8-Math.random()*30,w:3+Math.random()*5,h:7+Math.random()*10,color:colors[Math.floor(Math.random()*colors.length)],vx:(Math.random()-.5)*(burst?6:2),vy:burst?-2-Math.random()*4:1+Math.random()*2.5,rot:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.18,opacity:1,shape:Math.random()>.3?'rect':'circle'};}for(var i=0;i<50;i++)particles.push(makeParticle(true));function draw(p){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.globalAlpha=Math.max(0,p.opacity);ctx.fillStyle=p.color;if(p.shape==='rect'){ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h)}else{ctx.beginPath();ctx.arc(0,0,Math.max(1,p.w/2),0,Math.PI*2);ctx.fill()}ctx.restore();}function tick(){var elapsed=Date.now()-startTime,progress=elapsed/duration;var w=canvas.width/dpr,h=canvas.height/dpr;ctx.clearRect(0,0,w,h);if(elapsed<2000&&Math.random()<.25)particles.push(makeParticle(false));var fade=progress>.7?1-(progress-.7)/.3:1;for(var i=particles.length-1;i>=0;i--){var p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.045;p.vx*=.995;p.rot+=p.rv;p.opacity=fade;draw(p);if(p.y>h+20||p.opacity<=0)particles.splice(i,1);}if(elapsed<duration||particles.length>0){requestAnimationFrame(tick)}else{canvas.style.display='none'}}resize();window.addEventListener('resize',function(){resize()});tick();})();
 </script>
 </body>
 </html>
